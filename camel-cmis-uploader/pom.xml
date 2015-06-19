@@ -15,60 +15,77 @@
     <artifactId>camel-cmis-uploader</artifactId>
 
     <name>Services :: CMIS Uploader</name>
-    <description>Camel module monitoring a folder for changes and uploading files to a CMIS-compliant storage</description>
+    <description>Camel module monitoring a folder for changes and uploading files to a CMIS-compliant storage
+    </description>
+
+    <properties>
+        <camel.version>2.12.4</camel.version>
+        <chemistry.version>0.6.0</chemistry.version>
+    </properties>
 
     <dependencies>
+
+        <!-- Launchpad-->
+        <dependency>
+            <groupId>com.backbase.portal.integration</groupId>
+            <artifactId>integration-core</artifactId>
+            <version>${portal.integration.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- Apache Camel -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
+            <version>${camel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-spring</artifactId>
+            <version>${camel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-restlet</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+
+        <!-- Apache Tika [used for mime type detection]-->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>1.8</version>
         </dependency>
 
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-			<scope>provided</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.chemistry.opencmis</groupId>
             <artifactId>chemistry-opencmis-commons-api</artifactId>
-            <version>0.6.0</version>
+            <version>${chemistry.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.chemistry.opencmis</groupId>
             <artifactId>chemistry-opencmis-client-impl</artifactId>
-            <version>0.6.0</version>
+            <version>${chemistry.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
-			<scope>provided</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- TODO?-->
-        <dependency>
-            <groupId>com.backbase.launchpad.services.foundation</groupId>
-            <artifactId>demo-services-integration</artifactId>
-            <version>0.11.2</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>

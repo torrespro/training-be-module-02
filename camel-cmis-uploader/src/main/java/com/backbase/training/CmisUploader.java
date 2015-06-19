@@ -13,6 +13,8 @@ import org.apache.chemistry.opencmis.commons.enums.VersioningState;
 import org.apache.chemistry.opencmis.commons.exceptions.CmisObjectNotFoundException;
 import org.apache.chemistry.opencmis.commons.impl.dataobjects.ContentStreamImpl;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,8 @@ import java.util.Map;
 @Service
 public class CmisUploader {
 
+    private static final Logger logger = LoggerFactory.getLogger(CmisUploader.class);
+
     private Session cmisSession;
     private Map<String, String> cmisConnectionProperties;
 
@@ -46,10 +50,12 @@ public class CmisUploader {
         cmisConnectionProperties.put(SessionParameter.ATOMPUB_URL, url);
         cmisConnectionProperties.put(SessionParameter.BINDING_TYPE, BindingType.ATOMPUB.value());
         cmisConnectionProperties.put(SessionParameter.REPOSITORY_ID, repoId);
+        logger.debug("Starting CMIS uploader configured to communicate with: " + url);
     }
 
     //@Handler
     public void upload(GenericFile<File> body, @Header("mimeType") String mimeType) {
+        logger.debug("Uploading file: " + body.getFileName());
         String filePath = body.getRelativeFilePath().replace("\\", "/");
         try {
             Document file = (Document) getCmisSession().getObjectByPath(toCmisPath(filePath));
@@ -74,6 +80,7 @@ public class CmisUploader {
 
     @Handler
     public void uploadFlat(GenericFile<File> body, @Header("mimeType") String mimeType) {
+        logger.debug("Uploading file: " + body.getFileName());
         try {
             Document file = (Document) getCmisSession().getObjectByPath(toCmisPath(body.getFileNameOnly()));
             try (InputStream in = new FileInputStream(body.getFile())) {
@@ -127,7 +134,7 @@ public class CmisUploader {
     }
 
     private synchronized Session getCmisSession() {
-        if (cmisSession == null) {
+        if(cmisSession == null) {
             SessionFactory factory = SessionFactoryImpl.newInstance();
             cmisSession = factory.createSession(cmisConnectionProperties);
         }

@@ -1,1 +1,19 @@
-# training-be-module-02
+# Backbase Training Exercises
+
+## Portal Backend - Module 2: Content Services
+
+In this module, we will see how to communicate with Content Services application using CMIS client and how to extend default functionality with custom validation rules. 
+You will create Camel based integration route in CXP Portal application and configure it to communicate directly with Content Services and will create implementation of custom validator to control format of stored data.
+
+### Contents
+
+This module contains two components 
+
+1. camel-cmis-uploader : Camel based integration route to upload automatically upload files from file system to Content Services repository using Java CMIS client.
+[camel-cmis-uploader](https://github.com/Backbase/training-be-module-02/blob/code-migration/camel-cmis-uploader/README.md)
+
+2. contentservices-validator : Content Services extension code which validates repository content to match defined data format.
+For details look at 
+[contentservices-validator](https://github.com/Backbase/training-be-module-02/tree/code-migration/contentservices-validator/README.md)
+
+To be able to proceed with this section training you need to have Exercises Environment prepared.
