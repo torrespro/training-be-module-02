@@ -5,9 +5,9 @@ In this tutorial you will develop a Camel based component which listens to the s
 
 ### Installation & Configuration
 
-- Copy camel-cmis-uploader from training-modules into exercises-environment/services/ folder
+- **Copy camel-cmis-uploader from training-modules into exercises-environment/services/ folder.**
 
-- *Include camel-cmis-uploader module to the build.* Open `pom.xml` from *exercises-environment/services/*. Add `<module>camel-cmis-uploader</module>` into  `<modules>` section
+- **Include camel-cmis-uploader module to the build.** Open `pom.xml` from *exercises-environment/services/*. Add `<module>camel-cmis-uploader</module>` into  `<modules>` section
 	```xml
 	    <modules>
 	        ...	    
