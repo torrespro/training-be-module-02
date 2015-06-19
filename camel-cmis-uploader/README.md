@@ -5,9 +5,9 @@ In this tutorial you will develop a Camel based component which listens to the s
 
 ### Installation & Configuration
 
-- **Copy camel-cmis-uploader from training-modules into exercises-environment/services/ folder
+- Copy camel-cmis-uploader from training-modules into exercises-environment/services/ folder
 
-- **Include camel-cmis-uploader module to the build: 
+- Include camel-cmis-uploader module to the build: 
 Open `pom.xml` from exercises-environment/services/
 Add `<module>camel-cmis-uploader</module>` into  `<modules>` section
 
@@ -20,7 +20,7 @@ Add `<module>camel-cmis-uploader</module>` into  `<modules>` section
 ```	
 Re-compile *exercises-environment/services/* executing `mvn clean install` command.
 	
-- **Enable newly created module in Portal module.
+- Enable newly created module in Portal module.
    Add the following dependency to your `portal/pom.xml` file in `<dependencies>` section:
 
 ```xml
@@ -31,13 +31,13 @@ Re-compile *exercises-environment/services/* executing `mvn clean install` comma
     </dependency>
 ```
 
-- **Configure module properties. 
+- Configure module properties. 
 Edit `configuration/backbase.properties` file by addition of the following property specifying path to the file system directory which will be monitored for file system operations.
     
     `training.services.cmis.import.dir=absolute_path_to_monitored_folder`
 Re-complie configuration module by running `mvn clean install` command from *configuration* module.     
 
-- **Configure logging (optional).
+- Configure logging (optional).
 Add the following line to your *logback.xml*
 ```xml
     <logger name="com.backbase.training" level="DEBUG"/>
@@ -45,8 +45,8 @@ Add the following line to your *logback.xml*
 
 ### Build & Run
 
-- **Build Portal module with executing `mvn clean install` command from *portal* directory.
-- **Start Portal application with executing `mvn jetty:run` command from *portal* directory.
-- **Start Content Services application with executing `mvn jetty:run` command from *contentservices* directory.
-- **Place some file to the folder configured for monitoring. 
-- **Open CXP Manager Assets and make sure that newly uploaded file appears there.
+- Build Portal module with executing `mvn clean install` command from *portal* directory.
+- Start Portal application with executing `mvn jetty:run` command from *portal* directory.
+- Start Content Services application with executing `mvn jetty:run` command from *contentservices* directory.
+- Place some file to the folder configured for monitoring. 
+- Open CXP Manager Assets and make sure that newly uploaded file appears there.
