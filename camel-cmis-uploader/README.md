@@ -5,7 +5,7 @@ In this tutorial you will develop a Camel based component which listens to the s
 
 ### Installation & Configuration
 
-- **Copy camel-cmis-uploader from training-modules into exercises-environment/services/ folder.**
+- **Copy camel-cmis-uploader from training-modules into *exercises-environment/services/* folder.**
 
 - **Include camel-cmis-uploader module to the build.** Open `pom.xml` from *exercises-environment/services/*. Add `<module>camel-cmis-uploader</module>` into  `<modules>` section
 	```xml
@@ -17,7 +17,7 @@ In this tutorial you will develop a Camel based component which listens to the s
 	```	
 	Re-compile *exercises-environment/services/* executing `mvn clean install` command.
 	
-- **Enable newly created module in Portal module.** Add the following dependency to your `portal/pom.xml` file in `<dependencies>` section:
+- **Enable newly created module in Portal application.** Add the following dependency to your `portal/pom.xml` file in `<dependencies>` section:
 
 	```xml
 	    <dependency>

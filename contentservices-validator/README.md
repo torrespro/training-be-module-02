@@ -1,55 +1,63 @@
-1. Copy contentservices-validator from training-modules into exercises-environment/services/
+# Backbase Training Exercises
 
-2. Open pom.xml from exercises-environment/services/
-	 Add <module>contentservices-validator</module> into  <modules> section
-```
-	<modules>
-        <module>camel-player-management</module>
-	    <module>contentservices-validator</module>
-    </modules>
-```
+## Custom Content Services Validator 
+In this tutorial you will develop custom Content Services validator which allows to upload files of `bb:image` document type having *.png,.jpg or .jpeg* extension.
 
-	Re-Compile exercises-environment/services/ (mvn clean install / Make sure the Training Server is running)
+### Installation & Configuration
 
-3. You can find backbase.propertise on following path exercises-environment/configuration/src/main/resources
-	Open this file and at the end of it add lines:
+
+### Build & Run
+
+- **Copy contentservices-validator from training-modules into *exercises-environment/services/*.**
+
+- **Include contentservices-validator module to the build.** Open `pom.xml` from *exercises-environment/services/*. Add `<module>contentservices-validator</module>` into  `<modules>` section
+	```xml
+	    <modules>
+	        ...	    
+	        <module>contentservices-validator</module>
+	        ...
+	    </modules>
+	```	
+	Re-compile *exercises-environment/services/* executing `mvn clean install` command.
+
+- **Add newly created module into Content Services application.** Add the following dependency to your `contentservices/pom.xml` file in `<dependencies>` section:
+
+	```xml
+	    <dependency>
+	        <groupId>com.backbase.expert.training</groupId>
+	        <artifactId>contentservices-validator</artifactId>
+	        <version>1.0-SNAPSHOT</version>
+	    </dependency>
+	```
+
+	Copy `web.xml` file from `contentservices/target/contentservices/WEB-INF/web.xml` to `contentservices/src/main/webapp/WEB-INF` directory and change following section:
 	
-	# Validators (comma separated, order is important)
+	```
+		<context-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				classpath:/META-INF/spring/bb-contentservices.xml
+				classpath:/META-INF/spring/bb-validators.xml
+			</param-value>
+		</context-param>
+	```
+
+	Re-complie Content Services application by running `mvn clean install` command from *contentservices* module.     
+
+
+- **Register new validator in Content Services properties.** Edit `configuration/backbase.properties` file by addition of the following property specifying path to the file system directory which will be monitored for file system operations. 
+    
+    ```    
+    # Validators (comma separated, order is important)
 	contentservices.validators=com.backbase.portal.contentservices.validator.impl.RepositorySchemaValidator,com.backbase.portal.contentservices.validator.impl.CustomValidator
+    ```
+    Re-complie configuration module by running `mvn clean install` command from *configuration* module.    
 
-	Re-Compile exercises-environment/configuration	(mvn clean install)
-	
-4. Open pom.xml from exercises-environment/contentservices/
+### Build & Run
 
-	<!-- Statics sub-modules-->
-	<dependency>
-		<groupId>com.backbase.expert.training</groupId>
-		<artifactId>contentservices-validator</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</dependency>
-	
-	Open web.xml from exercises-environment/contentservices/
-	
-	find value:
-	
-	<context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            classpath:/META-INF/spring/bb-contentservices.xml
-        </param-value>
-    </context-param>
-	
-	Extend with:
-	
-   <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value><![CDATA[
-            classpath:/META-INF/spring/bb-contentservices.xml
-            classpath:/META-INF/spring/bb-validators.xml
-        ]]></param-value>
-    </context-param>
-
-
+- Start Content Services application with executing `mvn jetty:run` command from *contentservices* directory.
+- Try to upload to Content Services repository any `.txt` file using CMIS client and specifying document type with `bb:image`.
+- Make sure upload will fail because of validation. 
 	
 	
 	
