@@ -1,14 +1,13 @@
 # Backbase Training Exercises
 
 ## Custom Content Services Validator 
-In this tutorial you will develop custom Content Services validator which allows to upload files of `bb:image` document type having *.png,.jpg or .jpeg* extension.
+In this tutorial you will develop custom Content Services validator which allows to upload only files of `bb:image` document type having *.png,.jpg or .jpeg* extension.
 
 ### Installation & Configuration
 
+### Build & Configure
 
-### Build & Run
-
-- **Copy contentservices-validator from training-modules into *exercises-environment/services/*.**
+- **Copy *contentservices-validator* from training-modules into *exercises-environment/services/*.**
 
 - **Include contentservices-validator module to the build.** Open `pom.xml` from *exercises-environment/services/*. Add `<module>contentservices-validator</module>` into  `<modules>` section
 	```xml
@@ -30,7 +29,7 @@ In this tutorial you will develop custom Content Services validator which allows
 	    </dependency>
 	```
 
-	Copy `web.xml` file from `contentservices/target/contentservices/WEB-INF/web.xml` to `contentservices/src/main/webapp/WEB-INF` directory and change following section:
+	Copy `web.xml` file from `contentservices/target/contentservices/WEB-INF/web.xml` into `contentservices/src/main/webapp/WEB-INF` directory and change the following section:
 	
 	```
 		<context-param>
@@ -53,7 +52,7 @@ In this tutorial you will develop custom Content Services validator which allows
     ```
     Re-complie configuration module by running `mvn clean install` command from *configuration* module.    
 
-### Build & Run
+### Run & Test
 
 - Start Content Services application with executing `mvn jetty:run` command from *contentservices* directory.
 - Try to upload to Content Services repository any `.txt` file using CMIS client and specifying document type with `bb:image`.
