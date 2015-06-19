@@ -9,11 +9,11 @@ You will create Camel based integration route in CXP Portal application and conf
 
 This module contains two components 
 
-1. camel-cmis-uploader : Camel based integration route to upload automatically upload files from file system to Content Services repository using Java CMIS client.
-[camel-cmis-uploader](https://github.com/Backbase/training-be-module-02/blob/code-migration/camel-cmis-uploader/README.md)
+1. camel-cmis-uploader : Camel based integration route to automatically upload files from the file system to Content Services repository using Java CMIS client. For details check 
+[camel-cmis-uploader](https://github.com/Backbase/training-be-module-02/blob/code-migration/camel-cmis-uploader/README.md).
 
 2. contentservices-validator : Content Services extension code which validates repository content to match defined data format.
-For details look at 
-[contentservices-validator](https://github.com/Backbase/training-be-module-02/tree/code-migration/contentservices-validator/README.md)
+For details check
+[contentservices-validator](https://github.com/Backbase/training-be-module-02/tree/code-migration/contentservices-validator/README.md).
 
-To be able to proceed with this section training you need to have Exercises Environment prepared.
+To be able to proceed with this training section, you will need to have Exercises Environment prepared.
