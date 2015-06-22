@@ -7,7 +7,7 @@ In this tutorial you will develop custom Content Services validator which allows
 
 ### Build & Configure
 
-- **Copy *contentservices-validator* from training-modules into *exercises-environment/services/*.**
+- **Copy *contentservices-validator* from training-modules into the services folder of your Launchpad 0.12.x project.**
 
 - **Include contentservices-validator module to the build.** Open `pom.xml` from *exercises-environment/services/*. Add `<module>contentservices-validator</module>` into  `<modules>` section
 	```xml
