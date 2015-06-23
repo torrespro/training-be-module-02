@@ -71,7 +71,7 @@ public class CmisUploader {
 
             try (InputStream in = new FileInputStream(body.getFile())) {
                 ContentStream contentStream = new ContentStreamImpl(body.getFileNameOnly(), BigInteger.valueOf(body.getFileLength()), mimeType, in);
-                createDocument(parent, body.getFileNameOnly(), contentStream);
+                createDocument(parent, body.getFileNameOnly(), contentStream, mimeType);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -93,7 +93,7 @@ public class CmisUploader {
             Folder parent = getCmisSession().getRootFolder();
             try (InputStream in = new FileInputStream(body.getFile())) {
                 ContentStream contentStream = new ContentStreamImpl(body.getFileNameOnly(), BigInteger.valueOf(body.getFileLength()), mimeType, in);
-                createDocument(parent, body.getFileNameOnly(), contentStream);
+                createDocument(parent, body.getFileNameOnly(), contentStream, mimeType);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -125,12 +125,17 @@ public class CmisUploader {
         return parent.createFolder(props);
     }
 
-    private Document createDocument(Folder parent, String name, ContentStream contentStream) {
+    private Document createDocument(Folder parent, String name, ContentStream contentStream, String mimeType) {
         Map<String, Object> props = new HashMap<>();
         props.put(PropertyIds.BASE_TYPE_ID, DocumentType.DOCUMENT_BASETYPE_ID);
-        props.put(PropertyIds.OBJECT_TYPE_ID, DocumentType.DOCUMENT_BASETYPE_ID);
         props.put(PropertyIds.NAME, name);
-        return parent.createDocument(props, contentStream, VersioningState.NONE);
+        if(StringUtils.isNotBlank(mimeType) && mimeType.startsWith("image")){
+            props.put(PropertyIds.OBJECT_TYPE_ID, "bb:image");
+            props.put("bb:title", name);
+        }else{
+            props.put(PropertyIds.OBJECT_TYPE_ID, DocumentType.DOCUMENT_BASETYPE_ID);
+        }
+        return parent.createDocument(props, contentStream, VersioningState.MAJOR);
     }
 
     private synchronized Session getCmisSession() {
