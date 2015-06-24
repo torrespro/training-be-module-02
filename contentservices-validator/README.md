@@ -4,7 +4,7 @@
 
 This exercise is part of [Module 2: Content Services](https://github.com/Backbase/training-be-module-02/tree/code-migration)
 
-In this tutorial you will develop custom Content Services validator which allows to upload only files of `bb:image` document type with *.png*, *.jpg or *.jpeg* extensions.
+In this tutorial you will develop custom Content Services validator which allows to upload only files of `bb:image` document type with *.png*, *.jpg* or *.jpeg* extensions.
 
 ### Installation & Configuration
 
