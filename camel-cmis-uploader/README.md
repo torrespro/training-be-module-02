@@ -1,6 +1,6 @@
 # Backbase Training Exercises
 
-## Portal Backend - Module 1: Camel CMIS Uploader
+## Portal Backend - Module 2: Camel CMIS Uploader
 
 This exercise is part of [Module 2: Content Services](https://github.com/Backbase/training-be-module-02/tree/code-migration)
 
