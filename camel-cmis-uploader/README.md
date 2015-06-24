@@ -41,7 +41,6 @@ In this tutorial, you will develop a Camel based component which listens to the 
 
 ### Build & Run
 
-- Build services modules by executing `mvn clean install` command from the **services** directory.
 - Start Portal application by executing `mvn jetty:run` command from the **portal** directory.
 - Start Content Services application by executing `mvn jetty:run` command from the **contentservices** directory.
 - Place some file in the folder configured for monitoring. 
