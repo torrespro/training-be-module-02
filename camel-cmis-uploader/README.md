@@ -39,9 +39,10 @@ In this tutorial, you will develop a Camel based component which listens to the 
   Re-compile configuration module by running `mvn clean install` command from the **configuration** module.
 
 - Configure logging (optional). Add the following line to your **logback.xml**
-	```xml
-	    <logger name="com.backbase.training" level="DEBUG"/>
-	```
+
+  ```xml
+  <logger name="com.backbase.training" level="DEBUG"/>
+  ```
 
 ### Build & Run
 
