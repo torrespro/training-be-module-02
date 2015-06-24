@@ -46,7 +46,7 @@ In this tutorial, you will develop a Camel based component which listens to the 
 
 ### Build & Run
 
-- Start Portal application by executing `mvn jetty:run` command from the **portal** directory.
+- Start Portal application by executing `mvn clean jetty:run` command from the **portal** directory.
 - Start Content Services application by executing `mvn jetty:run` command from the **contentservices** directory.
 - Place some file in the folder configured for monitoring. 
 - Open CXP Manager Assets and make sure that newly uploaded file appears there.
