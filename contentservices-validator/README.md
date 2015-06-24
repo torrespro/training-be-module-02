@@ -54,7 +54,6 @@ In this tutorial you will develop custom Content Services validator which allows
 
 ### Run & Test
 
-- Build services modules by executing `mvn clean install` command from the **services** directory.
 - Start Content Services application by executing `mvn jetty:run` command from the **contentservices** directory.
 - Try to upload any `.gif` file to Content Services by using CMIS client and specifying the `bb:image` document type.
 - Make sure the upload fails because of validation.
