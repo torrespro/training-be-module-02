@@ -2,7 +2,7 @@
 
 ## Portal Backend - Module 2: Custom CS Validator
 
-This exercise is part of [Module 2: Content Services](https://github.com/Backbase/training-be-module-02/tree/code-migration)
+This exercise is part of [Module 2: Content Services](../../..)
 
 In this tutorial you will develop custom Content Services validator which allows to upload only files of `bb:image` document type with *.png*, *.jpg* or *.jpeg* extensions.
 
