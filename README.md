@@ -6,6 +6,10 @@ In this module, we will see how to communicate with Content Services application
 
 You will create Camel-based integration route in CXP Portal application and configure it to communicate directly with Content Services. You'll also create a custom validator to control format of stored data.
 
+### Prerequisites
+
+All exercises use the [standard portal set-up for backbase training](https://my.backbase.com/resources/how-to-guides/getting-your-first-launchpad-based-portal-set-up/).
+
 ### Contents
 
 This module contains two components:
