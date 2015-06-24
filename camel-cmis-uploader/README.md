@@ -8,9 +8,9 @@ In this tutorial, you will develop a Camel based component which listens to the 
 
 ### Installation & Configuration
 
-- **Copy camel-cmis-uploader from training-modules into the services folder of your Launchpad 0.12.x project.**
+- Copy **camel-cmis-uploader** into the **services** folder of your Launchpad 0.12.x project.
 
-- **Include camel-cmis-uploader module to the build.** Open `pom.xml` from *exercises-environment/services/*. Add `<module>camel-cmis-uploader</module>` into  `<modules>` section
+- Include **camel-cmis-uploader** module to the build. Open `services/pom.xml` and add *camel-cmis-uploader* in the `<modules>` section:
 	```xml
 	    <modules>
 	        ...	    
