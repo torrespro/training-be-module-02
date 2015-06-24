@@ -20,7 +20,7 @@ In this tutorial, you will develop a Camel based component which listens to the 
 	```	
 	Re-compile **services** by executing `mvn clean install` in the **services** folder.
 	
-- Enable the newly created module in Portal application. In the `<dependencies>` section of `portal/pom.xml`, add the following dependency:
+- Enable the newly created module in the Portal application. In the `<dependencies>` section of `portal/pom.xml`, add the following dependency:
 
 	```xml
 	    <dependency>
@@ -31,7 +31,7 @@ In this tutorial, you will develop a Camel based component which listens to the 
 	```
 
 - Configure module properties. Edit `configuration/src/main/resources/backbase.properties` file and add the following property specifying the path to the file system directory which will be monitored for file system operations.
-  `training.services.cmis.import.dir=absolute_path_to_monitored_folder`
+  ```training.services.cmis.import.dir=absolute_path_to_monitored_folder```
   Re-complie configuration module by running `mvn clean install` command from the **configuration** module.     
 
 - Configure logging (optional). Add the following line to your **logback.xml**
