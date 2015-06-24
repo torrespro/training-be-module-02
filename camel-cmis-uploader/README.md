@@ -31,7 +31,7 @@ In this tutorial, you will develop a Camel based component which listens to the 
 	```
 
 - Configure module properties. Edit `configuration/src/main/resources/backbase.properties` file and add the following property specifying the path to the file system directory which will be monitored for file system operations.
-- 
+ 
   ```training.services.cmis.import.dir=absolute_path_to_monitored_folder```
 
   Re-complie configuration module by running `mvn clean install` command from the **configuration** module.     
