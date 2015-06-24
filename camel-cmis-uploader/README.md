@@ -10,7 +10,7 @@ In this tutorial, you will develop a Camel based component which listens to the 
 
 - Copy **camel-cmis-uploader** into the **services** folder of your Launchpad 0.12.x project.
 
-- Include **camel-cmis-uploader** module to the build. Open `services/pom.xml` and add *camel-cmis-uploader* in the `<modules>` section:
+- Include **camel-cmis-uploader** module to the build. Open `services/pom.xml` and add **camel-cmis-uploader** in the `<modules>` section:
 	```xml
 	    <modules>
 	        ...	    
@@ -18,31 +18,31 @@ In this tutorial, you will develop a Camel based component which listens to the 
 	        ...
 	    </modules>
 	```	
-	Re-compile *exercises-environment/services/* executing `mvn clean install` command.
+	Re-compile **services** by executing `mvn clean install` in the **services** folder.
 	
-- **Enable newly created module in Portal application.** Add the following dependency to your `portal/pom.xml` file in `<dependencies>` section:
+- Enable the newly created module in Portal application. In the `<dependencies>` section of `portal/pom.xml`, add the following dependency:
 
 	```xml
 	    <dependency>
-	        <groupId>com.backbase.expert.training</groupId>
+	        <groupId>com.backbase.training</groupId>
 	        <artifactId>camel-cmis-uploader</artifactId>
 	        <version>1.0-SNAPSHOT</version>
 	    </dependency>
 	```
 
-- **Configure module properties.** Edit `configuration/backbase.properties` file by addition of the following property specifying path to the file system directory which will be monitored for file system operations. 
-    `training.services.cmis.import.dir=absolute_path_to_monitored_folder`
-Re-complie configuration module by running `mvn clean install` command from *configuration* module.     
+- Configure module properties. Edit `configuration/src/main/resources/backbase.properties` file and add the following property specifying the path to the file system directory which will be monitored for file system operations.
+  `training.services.cmis.import.dir=absolute_path_to_monitored_folder`
+  Re-complie configuration module by running `mvn clean install` command from the **configuration** module.     
 
-- **Configure logging (optional).** Add the following line to your *logback.xml*
+- Configure logging (optional). Add the following line to your **logback.xml**
 	```xml
 	    <logger name="com.backbase.training" level="DEBUG"/>
 	```
 
 ### Build & Run
 
-- Build Portal module with executing `mvn clean install` command from *portal* directory.
-- Start Portal application with executing `mvn jetty:run` command from *portal* directory.
-- Start Content Services application with executing `mvn jetty:run` command from *contentservices* directory.
-- Place some file to the folder configured for monitoring. 
+- Build services modules by executing `mvn clean install` command from the **services** directory.
+- Start Portal application by executing `mvn jetty:run` command from the **portal** directory.
+- Start Content Services application by executing `mvn jetty:run` command from the **contentservices** directory.
+- Place some file in the folder configured for monitoring. 
 - Open CXP Manager Assets and make sure that newly uploaded file appears there.
