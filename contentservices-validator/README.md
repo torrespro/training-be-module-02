@@ -1,15 +1,16 @@
 # Backbase Training Exercises
 
-## Custom Content Services Validator 
-In this tutorial you will develop custom Content Services validator which allows to upload only files of `bb:image` document type having *.png,.jpg or .jpeg* extension.
+## Portal Backend - Module 2: Custom CS Validator
+
+This exercise is part of [Module 2: Content Services](https://github.com/Backbase/training-be-module-02/tree/code-migration)
+
+In this tutorial you will develop custom Content Services validator which allows to upload only files of `bb:image` document type with *.png*, *.jpg or *.jpeg* extensions.
 
 ### Installation & Configuration
 
-### Build & Configure
+- Copy **contentservices-validator** into the **services** folder of your Launchpad 0.12.x project.
 
-- **Copy *contentservices-validator* from training-modules into the services folder of your Launchpad 0.12.x project.**
-
-- **Include contentservices-validator module to the build.** Open `pom.xml` from *exercises-environment/services/*. Add `<module>contentservices-validator</module>` into  `<modules>` section
+- Include contentservices-validator module to the build. Open `services/pom.xml` and add **contentservices-validator** in the `<modules>` section:
 	```xml
 	    <modules>
 	        ...	    
@@ -17,13 +18,13 @@ In this tutorial you will develop custom Content Services validator which allows
 	        ...
 	    </modules>
 	```	
-	Re-compile *exercises-environment/services/* executing `mvn clean install` command.
+	Re-compile **services** by executing `mvn clean install` in the **services** folder.
 
-- **Add newly created module into Content Services application.** Add the following dependency to your `contentservices/pom.xml` file in `<dependencies>` section:
+- Add the newly created module in the Content Services application. In the `<dependencies>` section of `contentservices/pom.xml`, add the following dependency:
 
 	```xml
 	    <dependency>
-	        <groupId>com.backbase.expert.training</groupId>
+	        <groupId>com.backbase.training</groupId>
 	        <artifactId>contentservices-validator</artifactId>
 	        <version>1.0-SNAPSHOT</version>
 	    </dependency>
@@ -41,22 +42,21 @@ In this tutorial you will develop custom Content Services validator which allows
 		</context-param>
 	```
 
-	Re-complie Content Services application by running `mvn clean install` command from *contentservices* module.     
+	If you are already running content services, stop your jetty server. Otherwise, just proceed with the next step.     
 
-
-- **Register new validator in Content Services properties.** Edit `configuration/backbase.properties` file by addition of the following property specifying path to the file system directory which will be monitored for file system operations. 
+- Register new validator in Content Services properties. Edit `configuration/src/main/resources/backbase.properties` file by adding the following property: 
     
     ```    
     # Validators (comma separated, order is important)
 	contentservices.validators=com.backbase.portal.contentservices.validator.impl.RepositorySchemaValidator,com.backbase.portal.contentservices.validator.impl.CustomValidator
     ```
-    Re-complie configuration module by running `mvn clean install` command from *configuration* module.    
+    Re-compile configuration module by running `mvn clean package` command from the **configuration** module.    
 
 ### Run & Test
 
-- Start Content Services application with executing `mvn jetty:run` command from *contentservices* directory.
-- Try to upload to Content Services repository any `.txt` file using CMIS client and specifying document type with `bb:image`.
-- Make sure upload will fail because of validation. 
+- Start Content Services application by executing `mvn jetty:run` command from the **contentservices** directory.
+- Try to upload any `.gif` file to Content Services by using CMIS client and specifying the `bb:image` document type.
+- Make sure the upload fails because of validation.
 	
 	
 	
