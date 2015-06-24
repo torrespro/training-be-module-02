@@ -15,7 +15,7 @@ All exercises use the [standard portal set-up for backbase training](https://my.
 This module contains two components:
 
 1. camel-cmis-uploader : Camel based integration route to automatically upload files from the file system to Content Services repository using Java CMIS client. For details check 
-[camel-cmis-uploader](https://github.com/Backbase/training-be-module-02/blob/code-migration/camel-cmis-uploader).
+[camel-cmis-uploader](camel-cmis-uploader).
 
 2. contentservices-validator : Content Services extension code which validates repository content to match defined data format. For details check
-[contentservices-validator](https://github.com/Backbase/training-be-module-02/tree/code-migration/contentservices-validator).
+[contentservices-validator](contentservices-validator).
