@@ -2,7 +2,7 @@
 
 ## Portal Backend - Module 1: Camel CMIS Uploader
 
-This exercise is part of [Module 1: Enterprise Integration](https://github.com/Backbase/training-be-module-01/tree/code-migration)
+This exercise is part of [Module 2: Content Services](https://github.com/Backbase/training-be-module-02/tree/code-migration)
 
 In this tutorial, you will develop a Camel based component which listens to the specified directory on file system and automatically uploads file copied to this directory to the Content Services repository.
 
