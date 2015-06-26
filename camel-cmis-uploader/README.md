@@ -46,6 +46,7 @@ In this tutorial, you will develop a Camel based component which listens to the 
 
 ### Build & Run
 
+- If Portal application is already running, stop it by pressing *Ctrl+C*.
 - Start Portal application by executing `mvn clean jetty:run` command from the **portal** directory.
 - Start Content Services application by executing `mvn jetty:run` command from the **contentservices** directory.
 - Place some file in the folder configured for monitoring. 
