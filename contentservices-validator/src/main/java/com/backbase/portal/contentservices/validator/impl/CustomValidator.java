@@ -66,7 +66,7 @@ public class CustomValidator implements RepositoryValidator {
 				&& (contentStream != null) && (contentStream.getLength() > 0L)
 				&& (!isAllowedExtensions(contentStream))) {
 			LOG.debug("Image has an invalid extensions");
-			throw new CmisNotSupportedException("Document with type definition " + typeDefinition.getDisplayName()+ " has an inavlid extensions");
+			throw new CmisNotSupportedException("Document with type definition " + typeDefinition.getDisplayName()+ " has an invalid extensions");
 		}
 
 	}
