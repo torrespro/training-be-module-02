@@ -8,7 +8,7 @@ In this tutorial, you will develop a Camel based component which listens to the 
 
 ### Installation & Configuration
 
-- Copy **camel-cmis-uploader** into the **services** folder of your Launchpad 0.12.x project.
+- Copy **camel-cmis-uplpoader** into the **services** folder of your Launchpad 0.12.x project.
 
 - Include **camel-cmis-uploader** module to the build. Open `services/pom.xml` and add **camel-cmis-uploader** in the `<modules>` section:
 	```xml
@@ -20,7 +20,7 @@ In this tutorial, you will develop a Camel based component which listens to the 
 	```	
 	Re-compile **services** by executing `mvn clean install` in the **services** folder.
 	
-- Enable the newly created module in the Portal application. In the `<dependencies>` section of `portal/pom.xml`, add the following dependency:
+- Enable the newly created module in the Portalserver application. In the `<dependencies>` section of `webapps/portalserver/pom.xml`, add the following dependency:
 
 	```xml
 	    <dependency>
@@ -46,7 +46,7 @@ In this tutorial, you will develop a Camel based component which listens to the 
 
 ### Build & Run
 
-- If Portal application is already running, stop it by pressing *Ctrl+C*. Start Portal application by executing `mvn clean jetty:run` command from the **portal** directory.
+- If Portalserver application is already running, stop it by pressing *Ctrl+C*. Start Portalserver application by executing `mvn clean jetty:run` command from the **webapps/portalserver** directory.
 - If Content Services application is already running, stop it by pressing *Ctrl+C*. Start Content Services application by executing `mvn jetty:run` command from the **contentservices** directory.
 - Place some file in the folder configured for monitoring. 
 - Open CXP Manager Assets and make sure that newly uploaded file appears there.
