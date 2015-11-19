@@ -20,7 +20,7 @@ In this tutorial, you will develop a Camel based component which listens to the 
 	```	
 	Re-compile **services** by executing `mvn clean install` in the **services** folder.
 	
-- Enable the newly created module in the Portal application. In the `<dependencies>` section of `portal/pom.xml`, add the following dependency:
+- Enable the newly created module in the Portal application. In the `<dependencies>` section of `portal/pom.xml` or `webapps/portalserver/pom.xml` , add the following dependency:
 
 	```xml
 	    <dependency>
