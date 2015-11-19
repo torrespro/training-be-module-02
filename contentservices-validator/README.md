@@ -20,7 +20,7 @@ In this tutorial you will develop custom Content Services validator which allows
 	```	
 	Re-compile **services** by executing `mvn clean install` in the **services** folder.
 
-- Add the newly created module in the Content Services application. In the `<dependencies>` section of `contentservices/pom.xml`, add the following dependency:
+- Add the newly created module in the Content Services application. In the `<dependencies>` section of `webapps/contentservices/pom.xml`, add the following dependency:
 
 	```xml
 	    <dependency>
@@ -30,7 +30,7 @@ In this tutorial you will develop custom Content Services validator which allows
 	    </dependency>
 	```
 
-	Copy `web.xml` file from `contentservices/target/contentservices/WEB-INF/web.xml` into `contentservices/src/main/webapp/WEB-INF` directory and change the following section:
+	Copy `web.xml` file from `webapps/contentservices/target/contentservices/WEB-INF/web.xml` into `webapps/contentservices/src/main/webapp/WEB-INF` directory and change the following section:
 	
 	```
 		<context-param>
@@ -54,7 +54,7 @@ In this tutorial you will develop custom Content Services validator which allows
 
 ### Run & Test
 
-- If Content Services application is already running, stop it by pressing *Ctrl+C*. Start Content Services application by executing `mvn jetty:run` command from the **contentservices** directory.
+- If Content Services application is already running, stop it by pressing *Ctrl+C*. Start Content Services application by executing `mvn jetty:run` command from the **webapps/contentservices** directory.
 - Try to upload any `.gif` file to Content Services by using CMIS client and specifying the `bb:image` document type.
 - Make sure the upload fails because of validation.
 	
