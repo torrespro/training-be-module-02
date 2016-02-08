@@ -1,5 +1,6 @@
 package com.backbase.training;
 
+import com.backbase.portal.commons.configuration.BackbaseConfiguration;
 import org.apache.camel.Handler;
 import org.apache.camel.Header;
 import org.apache.camel.component.file.GenericFile;
@@ -16,7 +17,6 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -38,19 +38,15 @@ public class CmisUploader {
     private Map<String, String> cmisConnectionProperties;
 
     @Autowired
-    public CmisUploader(
-            @Value("#{cmisConfig['cmisServerUrl']}") String url,
-            @Value("#{cmisConfig['cmisRepositoryId']}") String repoId,
-            @Value("#{cmisConfig['cmisUsername']}") String user,
-            @Value("#{cmisConfig['cmisPassword']}") String password) {
-
+    public CmisUploader(BackbaseConfiguration backbaseConfiguration) {
         cmisConnectionProperties = new HashMap<>();
-        cmisConnectionProperties.put(SessionParameter.USER, user);
-        cmisConnectionProperties.put(SessionParameter.PASSWORD, password);
-        cmisConnectionProperties.put(SessionParameter.ATOMPUB_URL, url);
+        cmisConnectionProperties.put(SessionParameter.USER, (String) backbaseConfiguration.getProperty("orchestrator.contenthost.username"));
+        cmisConnectionProperties.put(SessionParameter.PASSWORD, (String) backbaseConfiguration.getProperty("orchestrator.contenthost.password"));
+        cmisConnectionProperties.put(SessionParameter.ATOMPUB_URL, (String) backbaseConfiguration.getProperty("orchestrator.contenthost.atompath"));
         cmisConnectionProperties.put(SessionParameter.BINDING_TYPE, BindingType.ATOMPUB.value());
-        cmisConnectionProperties.put(SessionParameter.REPOSITORY_ID, repoId);
-        logger.debug("Starting CMIS uploader configured to communicate with: " + url);
+        cmisConnectionProperties.put(SessionParameter.REPOSITORY_ID, (String) backbaseConfiguration.getProperty("orchestrator.contenthost.repositoryid"));
+        logger.debug("Starting CMIS uploader configured to communicate with: " + backbaseConfiguration.getProperty("orchestrator.contenthost.atompath"));
+
     }
 
     //@Handler
@@ -110,7 +106,7 @@ public class CmisUploader {
             current = createFolder(parent, name);
         }
         parent = current;
-        if(depth == pathParts.size()) {
+        if (depth == pathParts.size()) {
             return parent;
         } else {
             return getOrCreateFolder(parent, pathParts, ++depth);
@@ -130,18 +126,18 @@ public class CmisUploader {
         Map<String, Object> props = new HashMap<>();
         props.put(PropertyIds.BASE_TYPE_ID, DocumentType.DOCUMENT_BASETYPE_ID);
         props.put(PropertyIds.NAME, name);
-        if(StringUtils.isNotBlank(mimeType) && mimeType.startsWith("image")){
+        if (StringUtils.isNotBlank(mimeType) && mimeType.startsWith("image")) {
             props.put(PropertyIds.OBJECT_TYPE_ID, "bb:image");
             props.put("bb:title", name);
             versoningState = VersioningState.MAJOR;
-        }else{
+        } else {
             props.put(PropertyIds.OBJECT_TYPE_ID, DocumentType.DOCUMENT_BASETYPE_ID);
         }
         return parent.createDocument(props, contentStream, versoningState);
     }
 
     private synchronized Session getCmisSession() {
-        if(cmisSession == null) {
+        if (cmisSession == null) {
             SessionFactory factory = SessionFactoryImpl.newInstance();
             cmisSession = factory.createSession(cmisConnectionProperties);
         }
