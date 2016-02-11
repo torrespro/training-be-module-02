@@ -8,7 +8,7 @@ You will create Camel-based integration route in CXP Portal application and conf
 
 ### Prerequisites
 
-All exercises use the [standard portal set-up for backbase training](https://my.backbase.com/resources/how-to-guides/getting-your-first-launchpad-based-portal-set-up/).
+All exercises use the [standard portal set-up for Backbase training](https://my.backbase.com/resources/how-to-guides/getting-your-first-launchpad-based-portal-set-up/).
 
 ### Contents
 
