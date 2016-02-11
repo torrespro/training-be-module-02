@@ -35,6 +35,11 @@ In this tutorial, you will develop a Camel based component which listens to the 
   ```
   training.services.cmis.import.dir=absolute_path_to_monitored_folder
   ```
+  And now we need to add the location of the Atom service document, so also we need to edit this property:
+  
+  ```
+  orchestrator.contenthost.atompath=http://${contentservices.host}:${contentservices.port}/${contentservices.context}/atom
+  ```
 
   Re-compile configuration module by running `mvn clean install` command from the **configuration** module.
 
