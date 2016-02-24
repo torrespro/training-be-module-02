@@ -33,7 +33,7 @@ In this tutorial you will develop custom Content Services validator which allows
 	Copy `web.xml` file from `webapps/contentservices/target/contentservices/WEB-INF/web.xml` into `webapps/contentservices/src/main/webapp/WEB-INF` directory and change the following section:
 	
 	```
-		<context-param>
+	<context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:/META-INF/spring/bb-contentservices.xml
