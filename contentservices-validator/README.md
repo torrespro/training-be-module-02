@@ -34,12 +34,15 @@ In this tutorial you will develop custom Content Services validator which allows
 	
 	```
 		<context-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>
-				classpath:/META-INF/spring/bb-contentservices.xml
-				classpath:/META-INF/spring/bb-validators.xml
-			</param-value>
-		</context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:/META-INF/spring/bb-contentservices.xml
+            classpath:/META-INF/spring/bb-validators.xml
+            classpath:/META-INF/spring/backbase-contentservices-administration-business.xml
+            classpath:/META-INF/spring/backbase-content-eventing-config.xml
+            classpath:/META-INF/spring/backbase-content-search-config.xml
+        </param-value>
+    </context-param>
 	```
 
 	If you are already running content services, stop your jetty server. Otherwise, just proceed with the next step.     
